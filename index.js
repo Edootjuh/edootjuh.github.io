@@ -1,3 +1,26 @@
+if (document.location.search && document.location.search.indexOf('sent') !== -1)
+    document.getElementById('div').innerHTML = `
+    <h1>Edo Mangelaars</h1>
+    <h3 id="thanks">Thanks</h3>`;
+else {
+    document.getElementById('div').innerHTML = `
+    <h1>Edo Mangelaars</h1>
+    <form id="form" action="//formcarry.com/s/HJUO3Yirf" method="POST" accept-charset="UTF-8">
+        <p id="emailme">E-mail me</p>
+        <input id="email" type="email" name="email" placeholder="Your e-mail address" required>
+        <textarea id="message" name="message" placeholder="Message" required></textarea>
+        <button id="send" class="g-recaptcha"
+                data-sitekey="6LeM70IUAAAAAIoGoFzrI967MuYAzAmgwkeU0Hqs"
+                data-callback="onSubmit">
+            Send
+        </button>
+    </form>`;
+    window.addEventListener('load', checkValidity);
+    const script = document.createElement('script');
+    script.src = '//www.google.com/recaptcha/api.js?onload=onLoad';
+    document.body.appendChild(script);
+}
+
 function checkValidity() {
     const email = document.getElementById('email');
     const message = document.getElementById('message');
@@ -9,8 +32,6 @@ function checkValidity() {
     return valid;
 }
 
-window.addEventListener('load', checkValidity);
-
 function onLoad() {
     document.getElementById('email').addEventListener('input', checkValidity);
     document.getElementById('message').addEventListener('input', checkValidity);
@@ -21,3 +42,4 @@ function onSubmit(token) {
     if (checkValidity())
         document.getElementById('form').submit();
 }
+
