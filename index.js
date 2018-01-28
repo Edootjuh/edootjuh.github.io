@@ -4,7 +4,9 @@ if (document.location.search && document.location.search.indexOf('sent') !== -1)
     <h3 id="thanks">Thanks</h3>`;
 else {
     document.getElementById('div').innerHTML = `
-    <h1>Edo Mangelaars</h1>
+<h1>Edo Mangelaars</h1>
+<div id="bottom">
+    <a id="linkedin" href="//www.linkedin.com/in/edo-mangelaars-88649555/">in</a>
     <form id="form" action="//formcarry.com/s/HJUO3Yirf" method="POST" accept-charset="UTF-8">
         <p id="emailme">E-mail me</p>
         <input id="email" type="email" name="email" placeholder="Your e-mail address" required>
@@ -14,7 +16,8 @@ else {
                 data-callback="onSubmit">
             Send
         </button>
-    </form>`;
+    </form>
+</div>`;
     window.addEventListener('load', checkValidity);
     const script = document.createElement('script');
     script.src = '//www.google.com/recaptcha/api.js?onload=onLoad';
